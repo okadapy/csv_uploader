@@ -1,0 +1,35 @@
+<!doctype html>
+<head>
+   <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='stylesheets/index.css') }}" />
+</head>
+<body>
+   <div class = "text" align="center">
+      <h1 class="pt-5 pb-2" >List of Uploads</h1>
+      <form action="/upload" method=post enctype=multipart/form-data>
+         <input type=file name=file>
+         <input type=submit value=Upload>
+      </form>
+      <form action="/load" method=get>
+         <input type=text name="filename" placeholder="Filename">
+         <input type=text name="sort_by" placeholder="Sort by">
+         <input type="text" name="filter_by" placeholder="Filter by">
+         <input type="submit" >
+      </form>
+      <table class="table" align="center">
+         <tr>
+            <th>ID</th>
+            <th>FILENAME</th>
+            <th>COLUMNS</th>
+
+         <!-- here is a for-loop to give us all the socks -->
+         {% for upload in uploads %}
+
+            <td>{{ upload.id }}</td>
+            <td>{{ upload.name }}</td>
+            <td>{{ upload.cols }}</td>
+
+         {% endfor %}
+         </tr>
+      </table>
+   </div>
+</body>

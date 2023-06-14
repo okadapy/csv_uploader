@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+     <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='stylesheets/load.css') }}" />
+    <title>load {{filename}}</title>
+</head>
+<body>
+  <div>
+    <table>
+
+        {% for col in data.columns %}
+      <tr>
+        <th> {{ col }} </th>
+        {% for entry in data[col]%}
+        <td> {{ entry }} </td>
+
+        {% endfor %}
+        </tr>
+        {% endfor %}
+
+    </table>
+  </div>
+</body>
+</html>
