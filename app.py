@@ -11,7 +11,8 @@ app = Flask(__name__)
 app.config['SQLALCHEMY_DATABASE_URI'] = "sqlite:///./master.db"
 app.secret_key = "mama"
 db = SQLAlchemy(app)
-
+if not os.path.exists(UPLOADS_DIR):
+    os.mkdir(UPLOADS_DIR)
 
 def allowed_ext(filename):
     return '.' in filename and \
